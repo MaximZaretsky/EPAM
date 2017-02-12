@@ -13,7 +13,7 @@ public class Main {
       formulas = scan.next();
 	} else {
 		for (int count = 0; count < args.length; count++) {
-			formulas += args[count];
+		  formulas += args[count];
 	    }
 	  }
     try {
