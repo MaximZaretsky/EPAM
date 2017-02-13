@@ -5,8 +5,16 @@ import java.math.*;
 
 public class MatchParser {
   
-  public BigDecimal Parse(String s) throws Exception {
-    Result result = PlusMinus(s);
+  private final char PLUS = '+';
+  private final char MINUS = '-';
+  private final char DIVIDE = '/';
+  private final char MULTIPLY = '*';
+  private final char LEFT_BRACKET = '(';
+  private final char RIGHT_BRACKET = ')';
+  private final char DOT = '.';
+  
+  public BigDecimal Parse(String expression) throws Exception {
+    Result result = PlusMinus(expression);
     if (!result.getRest().isEmpty()) {
       System.err.println("Error: can't full parse");
       System.err.println("rest: " + result.getRest());
@@ -18,19 +26,19 @@ public class MatchParser {
    * This method calculate operations of additions and subtraction,
    * which were not treated by method MulDiv
    */
-  private Result PlusMinus(String s) throws Exception {
-    Result current = MulDiv(s);
+  private Result PlusMinus(String expression) throws Exception {
+    Result current = MulDiv(expression);
     BigDecimal acc = current.getAcc();
 
-	while (current.getRest().length() > 0) {
-      if (!(current.getRest().charAt(0) == '+' || current.getRest().charAt(0) == '-')) {
+    while (current.getRest().length() > 0) {
+      if (!(current.getRest().charAt(0) == PLUS || current.getRest().charAt(0) == MINUS)) {
         break;
       }
       char sign = current.getRest().charAt(0);
       String next = current.getRest().substring(1);
 
-	  current = MulDiv(next);
-      if (sign == '+') {
+      current = MulDiv(next);
+      if (sign == PLUS) {
         acc = current.getAcc().add(acc);
       } else {
           acc = current.getAcc().negate().add(acc);
@@ -43,8 +51,8 @@ public class MatchParser {
    * This method calculate operations of multiplying and dividing,
    * which were not treated by method Bracket
    */
-  private Result MulDiv(String s) throws Exception {
-    Result current = Bracket(s);
+  private Result MulDiv(String expression) throws Exception {
+    Result current = Bracket(expression);
 
     BigDecimal acc = current.getAcc();
     while (true) {
@@ -52,13 +60,13 @@ public class MatchParser {
         return current;
       }
       char sign = current.getRest().charAt(0);
-      if ((sign != '*' && sign != '/')) {
+      if ((sign != MULTIPLY && sign != DIVIDE)) {
         return current;
       }
       String next = current.getRest().substring(1);
       Result right = Bracket(next);
 
-      if (sign == '*') {
+      if (sign == MULTIPLY) {
         acc = acc.multiply(right.getAcc(), MathContext.DECIMAL32);
       } else {
           acc = acc.divide(right.getAcc(), 10, RoundingMode.HALF_UP);
@@ -72,18 +80,18 @@ public class MatchParser {
    * This method realize brackets, define,
    * was bracket closed or not
    */
-  private Result Bracket(String s) throws Exception {
-    char zeroChar = s.charAt(0);
-    if (zeroChar == '(') {
-      Result r = PlusMinus(s.substring(1));
-      if (!r.getRest().isEmpty() && r.getRest().charAt(0) == ')') {
-        r.setRest(r.getRest().substring(1));
+  private Result Bracket(String expression) throws Exception {
+    char zeroChar = expression.charAt(0);
+    if (zeroChar == LEFT_BRACKET) {
+      Result result = PlusMinus(expression.substring(1));
+      if (!result.getRest().isEmpty() && result.getRest().charAt(0) == RIGHT_BRACKET) { // check, was bracket closed, or not
+        result.setRest(result.getRest().substring(1));
       } else {
           System.err.println("Error: not close bracket");
         }
-      return r;
+      return result;
     }
-    return Num(s);
+    return Num(expression);
   }
   
   /** 
@@ -91,32 +99,35 @@ public class MatchParser {
    * from given string, which contains expression,
    * converts this numbers into BigDecimal format.
    * Also, this method define, was string empty or not
+   * @param dot_cnt counts the number of dots in number 
+   * @param dPart convert our number from String to double
+   * @param bdPart convert number from double to BigDecimal
    */
-  private Result Num(String s) throws Exception {
+  private Result Num(String expression) throws Exception {
     int i = 0;
     int dot_cnt = 0;
     boolean negative = false;
-	
-    if ( s.charAt(0) == '-' ) {
+
+    if ( expression.charAt(0) == MINUS ) {
       negative = true;
-      s = s.substring( 1 );
+      expression = expression.substring( 1 );
     }
 
-    while (i < s.length() && (Character.isDigit(s.charAt(i)) || s.charAt(i) == '.')) {
-      if (s.charAt(i) == '.' && ++dot_cnt > 1) {
-        throw new Exception("not valid number '" + s.substring(0, i + 1) + "'");
+    while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == DOT)) {
+      if (expression.charAt(i) == DOT && ++dot_cnt > 1) {
+        throw new Exception("not valid number '" + expression.substring(0, i + 1) + "'");
       }
       i++;
     }
     if ( i == 0 ) { 
-      throw new Exception( "can't get valid number in '" + s + "'" );
+      throw new Exception( "can't get valid number in '" + expression + "'" );
     }
 
-    double dPart = Double.parseDouble(s.substring(0, i));
+    double dPart = Double.parseDouble(expression.substring(0, i));
     if ( negative ) {
       dPart = -dPart;
     }
-    String restPart = s.substring(i);
+    String restPart = expression.substring(i);
     BigDecimal bdPart = new BigDecimal(dPart);
 
     return new Result(bdPart, restPart);

@@ -6,6 +6,8 @@ import java.math.BigDecimal;
  * This class contain the result of
  * evaluating the treated part of the expression
  * and the rest of expression
+ * @param acc means "accumulator", because they accumulate
+ * result during the calculation
  */
  
 public class Result {
@@ -18,7 +20,7 @@ public class Result {
   }
   
   public BigDecimal getAcc () {
-	return acc;
+    return acc;
   }
 
   public void setAcc (BigDecimal acc) {
@@ -31,5 +33,5 @@ public class Result {
 
   public void setRest (String rest) {
     this.rest = rest;
-  }	
+  }
 }
