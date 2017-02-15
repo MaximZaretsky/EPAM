@@ -17,14 +17,6 @@ public class Input {
     }
   }
   
-  private boolean notContainBreak() {
-    if (in.nextLine().equals("break")) {
-      return false;
-    } else {
-        return true;
-    }
-  }
-  
   public List<String> getUserInformation() {
     return userInformation;
   }

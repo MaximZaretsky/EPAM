@@ -26,10 +26,18 @@ public class Users {
     } 
   }
   
+  /**
+   * This method split user information,
+   * convert them to String array
+   */
   private void splitOnBlocks(String user) {
     setFields(user.split(","));
   }
   
+  /**
+   * Add users information into lists of
+   * users parameters
+   */
   private void setFields(String[] userInformation) {
     namesOfUsers.add(userInformation[0]);
     surnamesOfUsers.add(userInformation[1]);
