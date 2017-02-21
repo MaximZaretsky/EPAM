@@ -16,27 +16,15 @@ public class Main {
     List<Programmer> programmers = new ArrayList<>();
     List<Qualification> team = new ArrayList<>();
 
-    for (int i = 0; i < 10; i++) {
-      Junior junior = new Junior();
-      programmers.add(junior);
-    }
-    for (int i = 10; i < 20; i++) {
-      Middle middle = new Middle();
-      programmers.add(middle);
-    }
-    for (int i = 20; i < 30; i++) {
-      Senior senior = new Senior();
-      programmers.add(senior);
-    }
-    for (int i = 30; i < 40; i++) {
-      Lead lead = new Lead();
-      programmers.add(lead);
-    }
+    programmers.add(new Junior());
+    programmers.add(new Middle());
+    programmers.add(new Senior());
+    programmers.add(new Lead());
 
     System.out.println("Enter number of main criterion for development your program: \n"
-                      + "1.Maximal productivity within budget \n"
-                      + "2.Minimal cost within productivity \n"
-                      + "3.Minimal quantity of programmer higher, than Junior within productivity \n");
+        + "1.Maximal productivity within budget \n"
+        + "2.Minimal cost within productivity \n"
+        + "3.Minimal quantity of programmer higher, than Junior within productivity \n");
 
     int criterion = in.nextInt();
 
@@ -45,25 +33,25 @@ public class Main {
       System.out.println("Enter your budget: ");
       System.out.println(maximalProductivity.findMaximalProductivity(in.nextInt(), programmers, team));
     } else if (criterion == MINIMAL_COST) {
-        System.out.println("Enter your budget: ");
-        int budget = in.nextInt();
+      System.out.println("Enter your budget: ");
+      int budget = in.nextInt();
 
-        System.out.println("Enter necessary productivity: ");
-        int productivity = in.nextInt();
+      System.out.println("Enter necessary productivity: ");
+      int productivity = in.nextInt();
 
-        MinimalCost minimalCost = new MinimalCost();
-        //minimalCost.findMinimalCost(budget, productivity, programmers, team);
+      MinimalCost minimalCost = new MinimalCost();
+      //minimalCost.findMinimalCost(budget, productivity, programmers, team);
     } else if (criterion == MINIMUM_OF_NOT_JUNIOR) {
-        System.out.println("Enter your budget: ");
-        int budget = in.nextInt();
+      System.out.println("Enter your budget: ");
+      int budget = in.nextInt();
 
-        System.out.println("Enter necessary productivity: ");
-        int productivity = in.nextInt();
+      System.out.println("Enter necessary productivity: ");
+      int productivity = in.nextInt();
 
-        MinimumOfNotJunior minimumOfNotJunior = new MinimumOfNotJunior();
-        //minimumOfNotJunior.findMinimumOfNotJunior(budget, productivity, programmers, team);
+      MinimumOfNotJunior minimumOfNotJunior = new MinimumOfNotJunior();
+      //minimumOfNotJunior.findMinimumOfNotJunior(budget, productivity, programmers, team);
     } else {
-        System.out.println("Was entered wrong number of criterion!");
+      System.out.println("Was entered wrong number of criterion!");
     }
   }
 }

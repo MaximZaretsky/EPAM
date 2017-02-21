@@ -5,16 +5,13 @@ import java.util.List;
  * higher, than Junior and with necessary productivity
  */
 public class MinimumOfNotJunior {
-  private int amountOfJuniors;
-  private int amountOfMiddles;
-  private int amountOfSeniors;
-  private int amountOfLeads;
 
   /**
    *
    * @param budget budget, received from customer
    * @param productivity necessary productivity
-   * @param programmers all programmers of company
+   * @param programmers type of programmers in company
+   * @param team void list for adding programmers
    */
   public  void findMinimumOfNotJunior(int budget, int productivity, Programmer[] programmers, List<Programmer> team){
 
