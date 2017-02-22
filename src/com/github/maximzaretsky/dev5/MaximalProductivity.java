@@ -14,15 +14,17 @@ public class MaximalProductivity {
    */
   public List<Qualification> findMaximalProductivity(int budget, List<Programmer> programmers, List<Qualification> team) {
     int maximum = 0;
-    int sawedBudget = 0;
+    int leftoverBudget = budget;
 
-    while(sawedBudget < budget) {
+    while(leftoverBudget > 0) {
       for (int i = 1; i < programmers.size(); i++) {
-        if (programmers.get(i).getProductivity() > programmers.get(maximum).getProductivity() &&  budget >= (sawedBudget + programmers.get(i).getSalary())) {
+        if ((programmers.get(i).getProductivity() > programmers.get(maximum).getProductivity())
+            &&  (programmers.get(i).getSalary() < (leftoverBudget))) {
           maximum = i;
         }
       }
-      sawedBudget += programmers.get(maximum).getSalary();
+      leftoverBudget -= programmers.get(maximum).getSalary();
+      System.out.println(leftoverBudget);
       team.add(programmers.get(maximum).getQualification());
     }
     return team;

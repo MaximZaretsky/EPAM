@@ -13,6 +13,6 @@ public class MinimalCost {
    * @param team void list for adding programmers
    */
   public void findMinimalCost(int budget, int productivity, Programmer[] programmers, List<Programmer> team){
-
+    //TODO: Write realization of greedy algorithm
   }
 }
