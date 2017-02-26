@@ -10,6 +10,8 @@ public class Hours extends FormatComponents {
   private final String FULL_HOUR = "hh";
   private final String HOUR_OF_DAY = "H";
   private final String FULL_HOUR_OF_DAY = "HH";
+  private final String AM_PM = "t";
+  private final String FULL_AM_PM = "tt";
 
   private String returnComponent;
 
@@ -36,6 +38,10 @@ public class Hours extends FormatComponents {
       getHourOfDay(calendar);
     } else if (formatComponent.equals(FULL_HOUR_OF_DAY)){
       getFullHourOfDay(calendar);
+    } else if (formatComponent.equals(AM_PM)){
+      getAmPm(calendar);
+    } else if (formatComponent.equals(FULL_AM_PM)){
+      getFullAmPm(calendar);
     }
   }
 
@@ -76,6 +82,30 @@ public class Hours extends FormatComponents {
       returnComponent = "0" + calendar.get(Calendar.HOUR_OF_DAY);
     } else {
       returnComponent = calendar.get(Calendar.HOUR_OF_DAY) + "";
+    }
+  }
+
+  /**
+   * Define AM or PM now in abbreviated form
+   * @param calendar calendar, received from constructor
+   */
+  private void getAmPm(Calendar calendar){
+    if (calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+      returnComponent = "A";
+    } else {
+      returnComponent = "P";
+    }
+  }
+
+  /**
+   * Define AM or PM now in full form
+   * @param calendar calendar, received from constructor
+   */
+  private void getFullAmPm(Calendar calendar){
+    if (calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+      returnComponent = "AM";
+    } else {
+      returnComponent = "PM";
     }
   }
 
