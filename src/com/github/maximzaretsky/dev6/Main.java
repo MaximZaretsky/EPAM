@@ -7,9 +7,6 @@ public class Main {
     Checker checker = new Checker();
     Scanner in = new Scanner(System.in);
 
-    System.out.println(calendar.get(Calendar.HOUR));
-    System.out.println(calendar.get(Calendar.HOUR_OF_DAY));
-
     System.out.println("Please, enter necessary parts of date, split their by whitespace");
     String formatInformation = in.nextLine();
 
