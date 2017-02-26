@@ -2,9 +2,9 @@
  * Created by Aramorchi on 25.02.2017.
  */
 public class Checker {
-  public boolean check(String inputString) {
+  public boolean correctInput(String inputString) {
     boolean correctInput = true;
-    String editedFormatInformation = inputString.replaceAll("[^dfghmstyzKMH ]", "");
+    String editedFormatInformation = inputString.replaceAll("[^dfghmstyzFHKM ]", "");
     if (editedFormatInformation.length() != inputString.length()) {
       correctInput = false;
     } else {
