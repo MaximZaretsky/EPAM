@@ -1,7 +1,15 @@
 /**
- * Created by Aramorchi on 25.02.2017.
+ * Check input string on correct input
  */
 public class Checker {
+
+  /**
+   * First phase of checking. Check, contain input string
+   * or not contain other symbols, except permitted
+   *
+   * @param inputString string, got from console
+   * @return correct input or not
+   */
   public boolean correctInput(String inputString) {
     boolean correctInput = true;
     String editedFormatInformation = inputString.replaceAll("[^dfghmstyzFHKM ]", "");
@@ -13,6 +21,11 @@ public class Checker {
     return correctInput;
   }
 
+  /**
+   * Second phase of checking
+   * @param informationForCheck string, passed the first phase
+   * @return correct input or not
+   */
   private boolean checkMoreDetail(String informationForCheck) {
     String[] words = informationForCheck.split(" ");
 

@@ -3,7 +3,7 @@ package Components;
 import java.util.Calendar;
 
 /**
- * Created by Aramorchi on 24.02.2017.
+ * Handles symbols, related to day
  */
 public class Months extends FormatComponents{
   private final String NUMBER_OF_MONTH = "M";
@@ -12,10 +12,20 @@ public class Months extends FormatComponents{
   private final String FULL_NAME_OF_MONTH = "MMMM";
   private String returnComponent;
 
+  /**
+   * Constructor of class, which transmit received data to defineMethodForExecution
+   * @param formatComponent string, received from factory
+   * @param calendar instance of java.util.Calendar
+   */
   public Months (String formatComponent, Calendar calendar) {
     defineMethodForExecution(formatComponent, calendar);
   }
 
+  /**
+   * Define, which method will be called depending on the received string
+   * @param formatComponent string, received from constructor
+   * @param calendar calendar, received from constructor
+   */
   private void defineMethodForExecution(String formatComponent, Calendar calendar){
     if (formatComponent.equals(NUMBER_OF_MONTH)){
       getNumberOfMonth(calendar);
@@ -28,10 +38,18 @@ public class Months extends FormatComponents{
     }
   }
 
+  /**
+   * Define number of month in format from 1 to 12
+   * @param calendar calendar, received from constructor
+   */
   private void getNumberOfMonth(Calendar calendar){
     returnComponent = calendar.get(Calendar.MONTH) + "";
   }
 
+  /**
+   * Define number of month in format from 01 to 12
+   * @param calendar calendar, received from constructor
+   */
   private void getFullNumberOfMonth(Calendar calendar){
     if ((calendar.get(Calendar.MONTH) + "").length() < 2) {
       returnComponent = "0" + calendar.get(Calendar.MONTH);
@@ -40,6 +58,10 @@ public class Months extends FormatComponents{
     }
   }
 
+  /**
+   * Define abbreviated name of month
+   * @param calendar calendar, received from constructor
+   */
   private void getAbbreviatedNameOfMonth(Calendar calendar){
     if (calendar.get(Calendar.MONTH) == Calendar.JANUARY) {
       returnComponent = "Jan";
@@ -68,6 +90,10 @@ public class Months extends FormatComponents{
     }
   }
 
+  /**
+   * Define full name of month
+   * @param calendar calendar, received from constructor
+   */
   private void getFullNameOfMonth(Calendar calendar){
     if (calendar.get(Calendar.MONTH) == Calendar.JANUARY) {
       returnComponent = "January";
@@ -96,7 +122,11 @@ public class Months extends FormatComponents{
     }
   }
 
-  public String getFormatComponent(){
+  /**
+   *
+   * @return value of milled component
+   */
+  public String getFormatComponent() {
     return returnComponent;
   }
 }

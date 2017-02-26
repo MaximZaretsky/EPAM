@@ -3,7 +3,7 @@ package Components;
 import java.util.Calendar;
 
 /**
- * Created by Aramorchi on 24.02.2017.
+ * Handles symbols, related to day
  */
 public class Days extends FormatComponents{
   private final String DAY_OF_MONTH = "d";
@@ -13,10 +13,20 @@ public class Days extends FormatComponents{
 
   private String returnComponent;
 
+  /**
+   * Constructor of class, which transmit received data to defineMethodForExecution
+   * @param formatComponent string, received from factory
+   * @param calendar instance of java.util.Calendar
+   */
   public Days(String formatComponent, Calendar calendar) {
     defineMethodForExecution(formatComponent, calendar);
   }
 
+  /**
+   * Define, which method will be called depending on the received string
+   * @param formatComponent string, received from constructor
+   * @param calendar calendar, received from constructor
+   */
   private void defineMethodForExecution(String formatComponent, Calendar calendar){
     if (formatComponent.equals(DAY_OF_MONTH)){
       getDayOfMonth(calendar);
@@ -29,10 +39,18 @@ public class Days extends FormatComponents{
     }
   }
 
+  /**
+   * Define number of day of month in format from 1 to 31
+   * @param calendar calendar, received from constructor
+   */
   private void getDayOfMonth(Calendar calendar){
     returnComponent = calendar.get(Calendar.DAY_OF_MONTH) + "";
   }
 
+  /**
+   * Define number of day of month in format from 01 to 31
+   * @param calendar calendar, received from constructor
+   */
   private void getFullDayOfMonth(Calendar calendar){
     if ((calendar.get(Calendar.DAY_OF_MONTH) + "").length() < 2) {
       returnComponent = "0" + calendar.get(Calendar.DAY_OF_MONTH);
@@ -41,6 +59,10 @@ public class Days extends FormatComponents{
     }
   }
 
+  /**
+   * Define abbreviated name of day of week
+   * @param calendar calendar, received from constructor
+   */
   private void getAbbreviatedNameOfDayWeek(Calendar calendar){
     if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
       returnComponent = "Sun";
@@ -59,6 +81,10 @@ public class Days extends FormatComponents{
     }
   }
 
+  /**
+   * Define full name of day of week
+   * @param calendar calendar, received from constructor
+   */
   private void getFullNameOfDayweek(Calendar calendar){
     if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
       returnComponent = "Sunday";
@@ -77,6 +103,10 @@ public class Days extends FormatComponents{
     }
   }
 
+  /**
+   *
+   * @return value of milled component
+   */
   public String getFormatComponent(){
     return returnComponent;
   }

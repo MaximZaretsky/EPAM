@@ -1,7 +1,18 @@
 import Components.*;
 import java.util.*;
 
+/**
+ * Factory class, which return one from inheritor
+ * of FormatComponents depending on the input string
+ */
 public class Factory{
+
+  /**
+   *
+   * @param componentString element of list, which we got from Splitter
+   * @param calendar Instance of java.util.Calendar
+   * @return one from inheritor of FormatComponents, depending on the input string
+   */
   public FormatComponents getComponent(String componentString, Calendar calendar) {
     FormatComponents component = null;
     if (componentString.startsWith("f") || componentString.startsWith("F")) {
