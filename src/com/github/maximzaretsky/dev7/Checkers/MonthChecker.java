@@ -1,12 +1,19 @@
 package Checkers;
 
 /**
- * Created by Aramorchi on 28.02.2017.
+ * Check existence of received month
  */
 public class MonthChecker implements DateComponentChecker {
   private final int MINIMAL_NUMBER_OF_MONTH = 1;
   private final int MAXIMAL_NUMBER_OF_MONTH = 12;
 
+  /**
+   * Check validity of received month
+   * @param month received month
+   * @param day received day
+   * @param year received year
+   * @return valid month or not
+   */
   public boolean checkValidity(String month, String day, String year) {
     boolean answer;
 
@@ -15,6 +22,11 @@ public class MonthChecker implements DateComponentChecker {
     return answer;
   }
 
+  /**
+   * Check existence of received month
+   * @param monthString number of received month
+   * @return exist or not
+   */
   private boolean checkExistenceOfMonth(String monthString) {
     boolean answer;
     int month = Integer.parseInt(monthString);

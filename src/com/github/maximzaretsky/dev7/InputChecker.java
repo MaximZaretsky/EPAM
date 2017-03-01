@@ -1,7 +1,14 @@
 /**
- * Created by Aramorchi on 28.02.2017.
+ * Check validity of received string with format components
  */
 public class InputChecker {
+
+  /**
+   * Check was input correct or not
+   *
+   * @param inputString received from user string
+   * @return valid string or not
+   */
   public boolean correctInput(String inputString) {
     boolean correctInput;
     String editedFormatInformation = inputString.replaceAll("[^0-9:/ ]", "");
