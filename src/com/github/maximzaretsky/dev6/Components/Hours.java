@@ -113,7 +113,7 @@ public class Hours extends FormatComponents {
    *
    * @return value of milled component
    */
-  public String getFormatComponent(){
+  public String getFormatComponent() {
     return returnComponent;
   }
 

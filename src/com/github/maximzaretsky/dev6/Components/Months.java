@@ -11,6 +11,7 @@ public class Months extends FormatComponents{
   private final String ABBREVIATED_NAME_OF_MONTH = "MMM";
   private final String FULL_NAME_OF_MONTH = "MMMM";
   private String returnComponent;
+  private final int ADD_THIS_NUMBER_TO_KNOW_REAL_NUMBER_OF_MONTH = 1;
 
   /**
    * Constructor of class, which transmit received data to defineMethodForExecution
@@ -43,7 +44,7 @@ public class Months extends FormatComponents{
    * @param calendar calendar, received from constructor
    */
   private void getNumberOfMonth(Calendar calendar){
-    returnComponent = calendar.get(Calendar.MONTH) + "";
+    returnComponent = (calendar.get(Calendar.MONTH) + ADD_THIS_NUMBER_TO_KNOW_REAL_NUMBER_OF_MONTH) + "";
   }
 
   /**
@@ -51,10 +52,10 @@ public class Months extends FormatComponents{
    * @param calendar calendar, received from constructor
    */
   private void getFullNumberOfMonth(Calendar calendar){
-    if ((calendar.get(Calendar.MONTH) + "").length() < 2) {
-      returnComponent = "0" + calendar.get(Calendar.MONTH);
+    if (((calendar.get(Calendar.MONTH) + ADD_THIS_NUMBER_TO_KNOW_REAL_NUMBER_OF_MONTH) + "").length() < 2) {
+      returnComponent = "0" + (calendar.get(Calendar.MONTH) + ADD_THIS_NUMBER_TO_KNOW_REAL_NUMBER_OF_MONTH);
     } else {
-      returnComponent = calendar.get(Calendar.MONTH) + "";
+      returnComponent = (calendar.get(Calendar.MONTH) + ADD_THIS_NUMBER_TO_KNOW_REAL_NUMBER_OF_MONTH) + "";
     }
   }
 

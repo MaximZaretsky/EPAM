@@ -13,7 +13,7 @@ public class Splitter {
    * method split
    * @param inputString string, which we got from console
    */
-  public Splitter(String inputString){
+  public Splitter(String inputString) {
     split(inputString);
   }
 
@@ -35,7 +35,7 @@ public class Splitter {
    *
    * @return list of splitted parameters
    */
-  public List<String> getSplittedInputString(){
+  public List<String> getSplittedInputString() {
     return splittedInputString;
   }
 }

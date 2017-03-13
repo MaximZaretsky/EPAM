@@ -26,4 +26,7 @@ public class InputComponents {
     }
   }
 
+  public List<FormatComponents> getOutputComponents() {
+    return outputComponents;
+  }
 }
