@@ -18,9 +18,7 @@ public class SplitterTest {
     Splitter splitter = new Splitter();
     String coordinatesString = "B2";
 
-
     assertEquals(coordinates, splitter.split(coordinatesString));
-
   }
 
 }
