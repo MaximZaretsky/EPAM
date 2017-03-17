@@ -65,26 +65,26 @@ public class PositionChecker {
    * @return possible or not
    */
   public boolean checkPossibilityToTurnUpIntoNecessaryField(ColorOfChequer color, List<Integer> startPosition, List<Integer> necessaryPosition) {
-    int horizontalDistanceBetweenFieldsForChequer = necessaryPosition.get(INDEX_OF_LETTER_PART) - startPosition.get(INDEX_OF_LETTER_PART);
-    int verticalDistanceBetweenFields = Math.abs(startPosition.get(INDEX_OF_DIGIT_PART) - necessaryPosition.get(INDEX_OF_DIGIT_PART));
+    int horizontalDistanceBetweenFieldsForChequer = Math.abs(necessaryPosition.get(INDEX_OF_LETTER_PART) - startPosition.get(INDEX_OF_LETTER_PART));
+    int verticalDistanceBetweenFields = startPosition.get(INDEX_OF_DIGIT_PART) - necessaryPosition.get(INDEX_OF_DIGIT_PART);
 
     boolean answer;
 
     if (color.equals(ColorOfChequer.WHITE)) {
-      if (horizontalDistanceBetweenFieldsForChequer > 0) {
+      if (verticalDistanceBetweenFields > 0) {
         answer = false;
       } else {
-        if (Math.abs(horizontalDistanceBetweenFieldsForChequer) > verticalDistanceBetweenFields) {
+        if (horizontalDistanceBetweenFieldsForChequer > Math.abs(verticalDistanceBetweenFields)) {
           answer = false;
         } else {
           answer = true;
         }
       }
     } else {
-      if (horizontalDistanceBetweenFieldsForChequer < 0) {
+      if (verticalDistanceBetweenFields < 0) {
         answer = false;
       } else {
-        if (Math.abs(horizontalDistanceBetweenFieldsForChequer) > verticalDistanceBetweenFields) {
+        if (horizontalDistanceBetweenFieldsForChequer > Math.abs(verticalDistanceBetweenFields)) {
           answer = false;
         } else {
           answer = true;
