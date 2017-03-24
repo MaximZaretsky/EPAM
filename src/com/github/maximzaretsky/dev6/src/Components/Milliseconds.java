@@ -40,7 +40,7 @@ public class Milliseconds extends FormatComponents{
    */
   private void getMilliseconds(Calendar calendar, String formatComponent){
     if (formatComponent.length() <= MAXIMAL_LENGTH) {
-      returnComponent = (calendar.get(Calendar.MILLISECOND) + "").substring(0, formatComponent.length() + 1);
+      returnComponent = (calendar.get(Calendar.MILLISECOND) + "").substring(0, formatComponent.length());
     } else {
       returnComponent = calendar.get(Calendar.MILLISECOND) + "";
       for (int i = MAXIMAL_LENGTH; i < formatComponent.length(); i++) {
@@ -57,7 +57,7 @@ public class Milliseconds extends FormatComponents{
   private void getNotNullMilliseconds(Calendar calendar, String formatComponent){
     if (calendar.get(Calendar.MILLISECOND) != 0) {
       if (formatComponent.length() <= MAXIMAL_LENGTH) {
-        returnComponent = (calendar.get(Calendar.MILLISECOND) + "").substring(0, formatComponent.length() + 1);
+        returnComponent = (calendar.get(Calendar.MILLISECOND) + "").substring(0, formatComponent.length());
       } else {
         returnComponent = calendar.get(Calendar.MILLISECOND) + "";
         for (int i = MAXIMAL_LENGTH; i < formatComponent.length(); i++) {
@@ -73,7 +73,7 @@ public class Milliseconds extends FormatComponents{
    *
    * @return value of milled component
    */
-  public String getFormatComponent(){
+  public String getFormatComponent() {
     return returnComponent;
   }
 }
