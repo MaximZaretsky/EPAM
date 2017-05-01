@@ -1,0 +1,8 @@
++ [open "http://htmlbook.ru/html/a/name" "30" ] 23.469
++ [CheckLinkPresentByName "dsq-app1" 0.139
+! [CheckPageTitle +"Render.ru" 0.029
++ [CheckPageContains "Internet Explorer" 0.108
+Total tests: 4
+Passed/Failed: 3/1
+Total time: 23.745
+Average time: 5.93625

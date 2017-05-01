@@ -1,0 +1,4 @@
+Open | http://htmlbook.ru/html/a/name | 30
+CheckLinkPresentByName| dsq-app1
+CheckPageTitle | Render.ru
+CheckPageContains | Internet Explorer
