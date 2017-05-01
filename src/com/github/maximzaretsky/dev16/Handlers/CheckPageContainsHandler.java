@@ -31,7 +31,7 @@ public class CheckPageContainsHandler extends AbstractHandler {
   }
 
   /**
-   * Create command for adding note in notebook
+   * Create command for finding necessary string on page
    *
    * @param commandAndParameters received from console string
    * @return concrete command
@@ -50,11 +50,6 @@ public class CheckPageContainsHandler extends AbstractHandler {
     }
   }
 
-  /**
-   * Extract command from received from console string
-   *
-   * @param inputString received from console string
-   */
   private void defineCommand(String inputString) {
     commandAndComponents = inputString.split("[|]");
 

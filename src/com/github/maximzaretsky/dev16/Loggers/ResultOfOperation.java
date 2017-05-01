@@ -1,7 +1,7 @@
 package Microframework.Loggers;
 
 /**
- * Created by Aramorchi on 01.05.2017.
+ * Class contains result of executing of command
  */
 public class ResultOfOperation {
   private String command;
@@ -12,7 +12,6 @@ public class ResultOfOperation {
     this.command = command;
     this.executionTime = executionTime;
     this.result = result;
-    System.out.println(command + " " + executionTime + " " + result);
   }
 
   public double getExecutionTime() {

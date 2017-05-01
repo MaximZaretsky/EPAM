@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Aramorchi on 01.05.2017.
+ * Realization of logger
  */
 public class Logger implements ILogger {
 
@@ -18,12 +18,17 @@ public class Logger implements ILogger {
   private final String MESSAGE_AVERAGE_TIME = "Average time: ";
 
 
-  @Override
+  /**
+   * Add received result of executing of command into list with results
+   * @param resultOfOperation
+   */
   public void addResultOfOperation(ResultOfOperation resultOfOperation) {
     results.add(resultOfOperation);
   }
 
-  @Override
+  /**
+   * Save information about executed command into file
+   */
   public void saveLogsIntoFile() {
     try (FileWriter fileWriter = new FileWriter("log.txt", false)) {
       for (ResultOfOperation resultOfOperation: results) {
@@ -40,10 +45,18 @@ public class Logger implements ILogger {
     }
   }
 
+  /**
+   * Return number of all executed tests
+   * @return number of all executed tests
+   */
   public int calculateNumberOfTests() {
     return results.size();
   }
 
+  /**
+   * Return number of all passed tests
+   * @return number of all passed tests
+   */
   public int calculateNumberOfPassedTests() {
     int passedTests = 0;
 
@@ -64,10 +77,18 @@ public class Logger implements ILogger {
     return totalTime;
   }
 
+  /**
+   * Return average time of executing test
+   * @return average time of executing test
+   */
   public double calculateAverageTime() {
     return calculateTotalTime()/calculateNumberOfTests();
   }
 
+  /**
+   * Return number of all failed tests
+   * @return number of all failed tests
+   */
   public int calculateNumberOfFailedTests() {
     int passedTests = 0;
 

@@ -31,9 +31,9 @@ public class CheckPageTitleHandler extends AbstractHandler {
   }
 
   /**
-   * Create command for adding note in notebook
+   * Create command for comparing title of page with necessary title
    *
-   * @param commandAndParameters received from console string
+   * @param commandAndParameters received from fiile string
    * @return concrete command
    * @throws IllegalArgumentException if all handlers did not handle this command
    */

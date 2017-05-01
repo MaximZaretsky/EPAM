@@ -2,7 +2,7 @@ package Microframework.Commands;
 import Microframework.*;
 
 /**
- * Created by Aramorchi on 27.04.2017.
+ * Command for finding received string on page
  */
 public class CheckPageContainsCommand implements ICommand{
   private String content;
@@ -11,7 +11,10 @@ public class CheckPageContainsCommand implements ICommand{
     this.content = content;
   }
 
+  /**
+   * Call method of WebDriverManager for finding received string on page
+   */
   public void Execute() {
-    BrowserProvider.getInstance().checkPageContains(content);
+    WebDriverManager.getInstance().checkPageContains(content);
   }
 }
