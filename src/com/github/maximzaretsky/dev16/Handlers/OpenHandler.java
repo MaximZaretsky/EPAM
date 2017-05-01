@@ -3,7 +3,7 @@ package Microframework.Handlers;
 import Microframework.Commands.*;
 
 /**
- * Handler for creation OpenCommand
+ * Created by Aramorchi on 30.04.2017.
  */
 public class OpenHandler extends AbstractHandler {
   private String command;
@@ -34,9 +34,9 @@ public class OpenHandler extends AbstractHandler {
   }
 
   /**
-   * Create command for open necessary url with necessary timeout
+   * Create command for adding note in notebook
    *
-   * @param commandAndParameters received from fiile string
+   * @param commandAndParameters received from console string
    * @return concrete command
    * @throws IllegalArgumentException if all handlers did not handle this command
    */
@@ -54,6 +54,11 @@ public class OpenHandler extends AbstractHandler {
     }
   }
 
+  /**
+   * Extract command from received from console string
+   *
+   * @param inputString received from console string
+   */
   private void defineCommand(String inputString) {
     commandAndComponents = inputString.split("[|]");
 

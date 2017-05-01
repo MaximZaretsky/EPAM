@@ -2,7 +2,7 @@ package Microframework.Commands;
 import Microframework.*;
 
 /**
- * Command for opening received url during received timeout
+ * Created by Aramorchi on 27.04.2017.
  */
 public class OpenCommand implements ICommand {
   private String url;
@@ -13,10 +13,7 @@ public class OpenCommand implements ICommand {
     this.timeout = timeout;
   }
 
-  /**
-   * Call method of WebDriverManager for opening received url during received timeout
-   */
   public void Execute() {
-    WebDriverManager.getInstance().openWithTimeout(url, timeout);
+    BrowserProvider.getInstance().openWithTimeout(url, timeout);
   }
 }

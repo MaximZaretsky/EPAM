@@ -6,14 +6,9 @@ import Microframework.Commands.*;
 import java.util.List;
 
 /**
- * Contain main method of program
+ * Created by Aramorchi on 27.04.2017.
  */
 public class Main {
-
-  /**
-   * This method is set property for webdriver, create chain of responsibilities
-   * start executing of program and save logs in logfile
-   */
   public static void main(String[] args){
     System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
@@ -27,13 +22,13 @@ public class Main {
     List<String> commands = commandsReader.getCommandsExtractedFromFile();
 
     Logger logger = new Logger();
-    WebDriverManager.getInstance().setLogger(logger);
+    BrowserProvider.getInstance().setLogger(logger);
 
     for (String commandString: commands) {
       ICommand concrecteCommand = concreteHandler.getCommand(commandString);
       concrecteCommand.Execute();
     }
-    WebDriverManager.getInstance().close();
-    WebDriverManager.getInstance().saveLogs();
+    BrowserProvider.getInstance().close();
+    BrowserProvider.getInstance().saveLogs();
   }
 }

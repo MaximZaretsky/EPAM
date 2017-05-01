@@ -1,7 +1,7 @@
 package Microframework.Loggers;
 
 /**
- * Interface of logger
+ * Created by Aramorchi on 01.05.2017.
  */
 public interface ILogger {
   void addResultOfOperation(ResultOfOperation resultOfOperation);

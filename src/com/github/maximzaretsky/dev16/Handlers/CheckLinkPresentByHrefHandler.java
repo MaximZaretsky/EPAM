@@ -31,7 +31,7 @@ public class CheckLinkPresentByHrefHandler extends AbstractHandler {
   }
 
   /**
-   * Create command for finding webelement with necessary href tag
+   * Create command for adding note in notebook
    *
    * @param commandAndParameters received from console string
    * @return concrete command
@@ -50,6 +50,11 @@ public class CheckLinkPresentByHrefHandler extends AbstractHandler {
     }
   }
 
+  /**
+   * Extract command from received from console string
+   *
+   * @param inputString received from console string
+   */
   private void defineCommand(String inputString) {
     commandAndComponents = inputString.split("[|]");
 

@@ -2,7 +2,7 @@ package Microframework.Commands;
 import Microframework.*;
 
 /**
- * Command for comparing title of page with received title
+ * Created by Aramorchi on 27.04.2017.
  */
 public class CheckPageTitleCommand implements ICommand {
   private String title;
@@ -11,10 +11,7 @@ public class CheckPageTitleCommand implements ICommand {
     this.title = title;
   }
 
-  /**
-   * Call method of WebDriverManager for comparing title of page with received title
-   */
   public void Execute() {
-    WebDriverManager.getInstance().checkPageTitle(title);
+    BrowserProvider.getInstance().checkPageTitle(title);
   }
 }
