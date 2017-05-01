@@ -7,12 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Aramorchi on 01.05.2017.
+ * Read commands from file
  */
 public class CommandsReader {
 
   private List<String> commandsExtractedFromFile = new ArrayList<>();
 
+  /**
+   * Extract command from file with commands and add them into list of commands
+   * @return list of commands
+   */
   public List<String> getCommandsExtractedFromFile() {
     String commandString;
     try (BufferedReader reader = new BufferedReader(new FileReader("instructions.txt"))) {

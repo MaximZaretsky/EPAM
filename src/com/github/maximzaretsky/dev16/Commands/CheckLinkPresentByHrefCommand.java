@@ -2,7 +2,7 @@ package Microframework.Commands;
 import Microframework.*;
 
 /**
- * Created by Aramorchi on 27.04.2017.
+ * Command for finding webelement with received href tag on page
  */
 public class CheckLinkPresentByHrefCommand implements ICommand {
   private String href;
@@ -11,7 +11,10 @@ public class CheckLinkPresentByHrefCommand implements ICommand {
     this.href = href;
   }
 
+  /**
+   * Call method of WebDriverManager for finding webelement with received href tag on page
+   */
   public void Execute() {
-    BrowserProvider.getInstance().checkLinkPresentByHref(href);
+    WebDriverManager.getInstance().checkLinkPresentByHref(href);
   }
 }

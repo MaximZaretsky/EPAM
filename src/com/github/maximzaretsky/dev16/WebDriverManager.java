@@ -9,25 +9,37 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Created by Aramorchi on 01.05.2017.
+ * Contain actions for work with webdriver
  */
-public class BrowserProvider {
+public class WebDriverManager {
 
-  private static BrowserProvider instance;
+  private static WebDriverManager instance;
   private WebDriver driver = new ChromeDriver();
   private ILogger logger;
 
-  public static BrowserProvider getInstance() {
+  /**
+   * Method for getting of instance of class
+   * @return instance of WebDriverManager
+   */
+  public static WebDriverManager getInstance() {
     if (instance == null) {
-      instance = new BrowserProvider();
+      instance = new WebDriverManager();
     }
     return instance;
   }
 
+  /**
+   * Set logger of class by received logger
+   * @param logger received logger
+   */
   public void setLogger(ILogger logger) {
     this.logger = logger;
   }
 
+  /**
+   * Check existence of webelement with necessary href on page
+   * @param href String with href
+   */
   public void checkLinkPresentByHref(String href) {
     String status;
     long startTime = System.currentTimeMillis();
@@ -42,6 +54,10 @@ public class BrowserProvider {
     logger.addResultOfOperation(new ResultOfOperation("[CheckLinkPresentByHref \"" + href + "\"", timeOfExecution, status));
   }
 
+  /**
+   * Check existence of webelement with necessary tag "name" on page
+   * @param name String with name
+   */
   public void checkLinkPresentByName(String name) {
     String status;
     long startTime = System.currentTimeMillis();
@@ -56,6 +72,10 @@ public class BrowserProvider {
     logger.addResultOfOperation(new ResultOfOperation("[CheckLinkPresentByName \"" + name + "\"", timeOfExecution, status));
   }
 
+  /**
+   * Compares title of page with received title
+   * @param title String with title
+   */
   public void checkPageTitle(String title) {
     String status;
     long startTime = System.currentTimeMillis();
@@ -69,6 +89,10 @@ public class BrowserProvider {
     logger.addResultOfOperation(new ResultOfOperation("[CheckPageTitle +\"" + title + "\"", timeOfExecution, status));
   }
 
+  /**
+   * Method is trying to find received content on page
+   * @param content String with content
+   */
   public void checkPageContains(String content) {
     String status;
     long startTime = System.currentTimeMillis();
@@ -82,6 +106,11 @@ public class BrowserProvider {
     logger.addResultOfOperation(new ResultOfOperation("[CheckPageContains \"" + content + "\"", timeOfExecution, status));
   }
 
+  /**
+   * Method is trying to open received url during received timeout
+   * @param url String with url
+   * @param timeout number of seconds in timeout
+   */
   public void openWithTimeout(String url, int timeout) {
     driver.manage().timeouts().pageLoadTimeout(timeout, TimeUnit.SECONDS);
     String status;
@@ -102,10 +131,16 @@ public class BrowserProvider {
     logger.addResultOfOperation(new ResultOfOperation("[open \"" + url +"\" \"" + timeout +"\" ]", timeOfExecution, status));
   }
 
+  /**
+   * This method is close webdriver
+   */
   public void close() {
     driver.close();
   }
 
+  /**
+   * This method call save method of logger
+   */
   public void saveLogs() {
     logger.saveLogsIntoFile();
   }

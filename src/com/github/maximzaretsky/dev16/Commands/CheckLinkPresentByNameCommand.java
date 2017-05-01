@@ -2,7 +2,7 @@ package Microframework.Commands;
 import Microframework.*;
 
 /**
- * Created by Aramorchi on 27.04.2017.
+ * Command for finding webelement with received name tag on page
  */
 public class CheckLinkPresentByNameCommand implements ICommand {
   private String name;
@@ -11,7 +11,10 @@ public class CheckLinkPresentByNameCommand implements ICommand {
     this.name = name;
   }
 
+  /**
+   * Call method of WebDriverManager for finding webelement with received name tag on page
+   */
   public void Execute() {
-    BrowserProvider.getInstance().checkLinkPresentByName(name);
+    WebDriverManager.getInstance().checkLinkPresentByName(name);
   }
 }
