@@ -1,6 +1,7 @@
 package vagrantWP;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import vagrantWP.PageObjects.AdminPage;
 import vagrantWP.PageObjects.*;
 
@@ -8,15 +9,35 @@ import vagrantWP.PageObjects.*;
  * Created by Lenovo on 26.06.2017.
  */
 public class PageForTestsCreator {
+  private static PageForTestsCreator instance;
+  
   private WebDriver driver;
   private final static String ADMIN_LOGIN = "admin";
   private final static String ADMIN_PASSWORD = "admin";
+  private final static String HOST = "localhost:8080";
   
-  public PageForTestsCreator(WebDriver driver) {
-    this.driver = driver;
+  private PageForTestsCreator() {
+  
+  }
+  
+  public static PageForTestsCreator getInstance() {
+    if (instance == null) {
+      instance = new PageForTestsCreator();
+    }
+    return instance;
+  }
+  
+  private void resetDriver() {
+    driver = new ChromeDriver();
+    driver.get(HOST);
+  }
+  
+  public void closeDriver() {
+    driver.close();
   }
   
   public MainPage getMainPage() {
+    resetDriver();
     MainPage mainPage = new MainPage(driver);
     return mainPage;
   }
