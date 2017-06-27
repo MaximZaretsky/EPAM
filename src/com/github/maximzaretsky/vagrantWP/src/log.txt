@@ -1,0 +1,14 @@
+Total tests: 11
+Passed/Failed: 11/0
+[Valid authorization] [Passed] 11478.0 ms 
+[Create new page] [Passed] 26900.0 ms 
+[Create new page] [Passed] 19051.0 ms 
+[Create new page] [Passed] 17426.0 ms 
+[Create new post] [Passed] 16927.0 ms 
+[Create new post] [Passed] 15200.0 ms 
+[Create new post] [Passed] 16543.0 ms 
+[Create new page] [Passed] 20431.0 ms 
+[Create new post] [Passed] 17270.0 ms 
+[Invalid authorization] [Passed] 9640.0 ms 
+[Invalid authorization] [Passed] 9636.0 ms 
+Total time: 180502.0 ms
