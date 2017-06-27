@@ -1,6 +1,7 @@
 package vagrantWP.PageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -32,8 +33,15 @@ public class LoginPage {
     return new LoginPage(driver);
   }
   
-  public By getWrongLoginMessage() {
-    return wrongLoginMessage;
+  public boolean isWrongAuthorization() {
+    boolean answer;
+    try {
+      driver.findElement(wrongLoginMessage);
+      answer = true;
+    } catch (NoSuchElementException e) {
+      answer = false;
+    }
+    return answer;
   }
   
   private void sendLogin(String login) {

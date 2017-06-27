@@ -1,6 +1,7 @@
 package vagrantWP.PageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -11,6 +12,7 @@ public class AdminPage {
   
   private By postsLocator = By.xpath(".//div[text()= \"Posts\"]");
   private By pagesLocator = By.xpath(".//div[text()= \"Pages\"]");
+  private By adminLocator = By.xpath(".//div[@id = \"adminmenuback\"]");
   
   public AdminPage(WebDriver driver) {
     this.driver = driver;
@@ -24,5 +26,16 @@ public class AdminPage {
   public AllPagesPage getAllPagesPage() {
     driver.findElement(pagesLocator).click();
     return new AllPagesPage(driver);
+  }
+  
+  public boolean isAdminPage() {
+    boolean answer;
+    try {
+      driver.findElement(adminLocator);
+      answer = true;
+    } catch (NoSuchElementException e) {
+      answer = false;
+    }
+    return answer;
   }
 }
